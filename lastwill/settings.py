@@ -136,8 +136,8 @@ ETHERSCAN_API_URL = 'https://api.etherscan.io/api'
 API_KEY = 'G9G5NYXAFKJZ7R9YPKA9FQHCKZGX5HZZUB'
 
 try:
-    from students.settings_local import *
+    from lastwill.settings_local import *
 except ImportError as exc:
-    __import__('warnings').warn("Can't load local settings: {}".format(st$
+    __import__('warnings').warn("Can't load local settings: {}".format(str(exc)))
         
         
