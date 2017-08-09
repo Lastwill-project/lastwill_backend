@@ -21,4 +21,4 @@ def is_percent(number):
     except ValueError:
         return False
     else:
-        return 1 <= number <= 100
+        return 1 <= int(number) <= 100
