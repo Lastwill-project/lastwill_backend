@@ -135,3 +135,10 @@ STATICFILES_DIRS = (
 ETHERSCAN_API_URL = 'https://api.etherscan.io/api'
 API_KEY = 'G9G5NYXAFKJZ7R9YPKA9FQHCKZGX5HZZUB'
 LASTWILL_ACCOUNT = '0x0'
+
+try:
+    from lastwill.settings_local import *
+except ImportError as exc:
+    __import__('warnings').warn("Can't load local settings: {}".format(str(exc)))
+        
+        
