@@ -16,4 +16,9 @@ def is_email(string):
 
 
 def is_percent(number):
-    return isinstance(number, int) and 1 <= number <= 100
+    try:
+        int(number)
+    except ValueError:
+        return False
+    else:
+        return 1 <= number <= 100
