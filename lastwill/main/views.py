@@ -39,6 +39,7 @@ def create_contract(request):
             raise APIException(code=400, detail='heir email %s is not valid' % heir['email'])
         if not check.is_percent(heir['percent']):
             raise APIException(code=400, detail='percent %s is not valid' % heir['percent'])
+        heir['percent'] = int(heir['percent'])
     if sum([x['percent'] for x in request.data['heirs']]) != 100:
         raise APIException(code=400, detail='percents sum is not equal to 100')
     with open('../lastwill/contracts/LastWillContractTemplate.sol', 'r') as contract_file:
