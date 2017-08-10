@@ -2,7 +2,7 @@ import re
 from django.core.validators import validate_email
 
 def is_address(string):
-    return re.match('^0x[a-fA-F\d]{40}$', string) is not None
+    return re.match('^0[xX][a-fA-F\d]{40}$', string) is not None
 
 
 def is_email(string):

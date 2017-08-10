@@ -46,7 +46,18 @@ def create_contract(request):
         contract = contract_file.read()
         contract = re.sub('{{targetUser}}', request.data['address'], contract)
         contract = re.sub('{{lastWillAccount}}', settings.LASTWILL_ACCOUNT, contract)
-        contract = re.sub('{{recipientPercents}}', 'zzz', contract)
+        contract = re.sub(
+                '{{recipientPercents}}',
+#                'zzz',
+                '[{}]'.format(
+                        ', '.join(['RecepientPercent({{recipient: {recipient}, percent: {percent}}})'.format(
+                                    recipient=heir['address'],
+                                    percent=heir['percent']
+                             ) for heir in request.data['heirs']]
+                        )
+                ),
+                contract
+        )
 
     print(contract) 
     # deploy
